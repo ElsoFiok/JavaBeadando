@@ -1,4 +1,4 @@
-package com.beadando.javabeadando.controller; // Adjust according to your actual package structure
+package com.beadando.javabeadando.controllers; // Adjust according to your actual package structure
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
