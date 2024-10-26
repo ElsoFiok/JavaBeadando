@@ -1,30 +1,27 @@
-package com.beadando.javabeadando.controllers; // Adjust according to your actual package structure
+package com.beadando.javabeadando.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.security.Principal;
-
-import com.beadando.javabeadando.entity.User; // Adjust the import according to your User entity package
-import com.beadando.javabeadando.service.UserService; // Adjust the import according to your UserService package
+import com.beadando.javabeadando.entity.User;
+import com.beadando.javabeadando.service.UserService;
 
 @Controller
 public class UserController {
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    private UserService userService; // Assume you have a UserService to handle user-related operations
+    private UserService userService;
 
     @GetMapping("/")
-    public String home(Model model, Principal principal) {
-        boolean loggedIn = principal != null;
-        model.addAttribute("loggedIn", loggedIn);
-        if (loggedIn) {
-            model.addAttribute("username", principal.getName());
-        }
+    public String home() {
         return "index"; // returns index.html
     }
 
@@ -35,13 +32,23 @@ public class UserController {
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute User user) {
-        userService.saveUser(user); // Save user
-        return "redirect:/login"; // Redirect to login page
+        userService.saveUser(user);
+        return "redirect:/login"; // Redirect to login page after registration
     }
 
     @GetMapping("/login")
     public String login() {
-        return "login"; // returns login.html
+        return "login"; // returns register.html
     }
-}
 
+    @PostMapping("/login")
+    public String loginmania() {
+        return "redirect:/loginintermediate"; // Redirect to login page after registration
+    }
+    @GetMapping("/loginintermediate")
+    public String showLoginIntermediatePage(Model model) {
+        model.addAttribute("message", "This is the intermediate login page."); // Set a message for the view
+        return "loginintermediate"; // Return the name of your HTML template (e.g., loginintermediate.html)
+    }
+
+}
