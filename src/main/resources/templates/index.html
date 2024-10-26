@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startlap - Képzelet Gimnázium és Szakközépiskola</title>
+    <link rel="stylesheet" href="/css/style.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+
+<!-- Header Section -->
+<header>
+    <h1>Képzelet Gimnázium és Szakközépiskola</h1>
+</header>
+
+<!-- Navigation Bar -->
+<nav>
+    <ul>
+        <li sec:authorize="!isAuthenticated()"><a href="#login">Bejelentkezés</a></li>
+        <li sec:authorize="isAuthenticated()"><a href="#logout">Kijelentkezés</a></li>
+        <li sec:authorize="!isAuthenticated()"><a href="#register">Regisztráció</a></li>
+    </ul>
+</nav>
+
+
+<!-- Main Content Section -->
+<main>
+    <h2>Üdvözöljük a Képzelet Gimnázium és Szakközépiskolában!</h2>
+    <p>Itt megtekintheti az összes szükséges információt és pontszámokat.</p>
+    <!-- Additional content can be added here -->
+</main>
+
+<!-- Footer Section -->
+<footer>
+    <p>&copy; 2024 Képzelet Gimnázium és Szakközépiskola. Minden jog fenntartva.</p>
+</footer>
+
+</body>
+</html>

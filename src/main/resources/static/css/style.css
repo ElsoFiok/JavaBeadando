@@ -1,0 +1,69 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif; /* Set a clean sans-serif font */
+    line-height: 1.6; /* Improve readability */
+    background-color: #f4f4f4; /* Light gray background */
+}
+
+/* Header styles */
+header {
+    background: #007BFF; /* Blue background for the header */
+    color: white; /* White text color */
+    text-align: center; /* Center align text */
+    padding: 20px 0; /* Padding for top and bottom */
+}
+
+/* Navigation bar styles */
+nav {
+    background: #333; /* Dark background for the navbar */
+}
+
+nav ul {
+    list-style: none; /* Remove bullet points from list */
+    display: flex; /* Flexbox for horizontal layout */
+    justify-content: center; /* Center the items */
+    padding: 10px 0; /* Padding for top and bottom */
+}
+
+nav ul li {
+    margin: 0 15px; /* Space between items */
+}
+
+nav ul li a {
+    color: white; /* White text color for links */
+    text-decoration: none; /* Remove underline from links */
+    padding: 8px 15px; /* Padding around links */
+    transition: background 0.3s; /* Smooth transition for hover effect */
+}
+
+nav ul li a:hover {
+    background: #555; /* Darker background on hover */
+    border-radius: 5px; /* Rounded corners for the hover effect */
+}
+
+/* Main content styles */
+main {
+    padding: 20px; /* Padding for the main content */
+    background: white; /* White background for main content */
+    max-width: 800px; /* Maximum width for content */
+    margin: 20px auto; /* Center the main content */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Footer styles */
+footer {
+    text-align: center; /* Center align footer text */
+    padding: 10px 0; /* Padding for top and bottom */
+    background: #333; /* Dark background for footer */
+    color: white; /* White text color */
+    position: relative; /* Position relative for footer */
+    bottom: 0; /* Align to bottom */
+    width: 100%; /* Full width */
+}
