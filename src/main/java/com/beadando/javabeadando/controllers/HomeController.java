@@ -4,9 +4,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
-
-    @GetMapping("/")
+    @GetMapping("/home") // Change the path
     public String index() {
-        return "index"; // This will look for index.html in the templates folder
+        return "home"; // your view name
     }
 }

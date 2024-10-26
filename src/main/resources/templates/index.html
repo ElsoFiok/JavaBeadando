@@ -16,11 +16,12 @@
 <!-- Navigation Bar -->
 <nav>
     <ul>
-        <li sec:authorize="!isAuthenticated()"><a href="#login">Bejelentkezés</a></li>
-        <li sec:authorize="isAuthenticated()"><a href="#logout">Kijelentkezés</a></li>
-        <li sec:authorize="!isAuthenticated()"><a href="#register">Regisztráció</a></li>
+        <li sec:authorize="!isAuthenticated()"><a href="/login">Bejelentkezés</a></li>
+        <li sec:authorize="isAuthenticated()"><a href="/logout">Kijelentkezés</a></li>
+        <li sec:authorize="!isAuthenticated()"><a href="/register">Regisztráció</a></li>
     </ul>
 </nav>
+
 
 
 <!-- Main Content Section -->
