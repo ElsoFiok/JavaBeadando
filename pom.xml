@@ -74,7 +74,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version> <!-- Choose the appropriate version -->
+            <scope>provided</scope>
+        </dependency>
         <!-- Spring Security Test (for testing security aspects) -->
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -89,6 +94,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+
             </plugin>
         </plugins>
     </build>

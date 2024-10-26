@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Garamond', serif; /* Elegant serif font for a classic gothic look */
+    line-height: 1.6;
+    background-color: #0d0d0d; /* Deep black background */
+    color: #f0f0f0; /* Light gray text for contrast */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background: #222; /* Dark gray header */
+    color: #e8c3a0; /* Light beige for text */
+    text-align: center;
+    padding: 20px 0;
+    font-size: 2.5em; /* Larger font size for header */
+    text-shadow: 2px 2px 8px #000; /* Strong shadow for depth */
+    border-bottom: 2px solid #555; /* Subtle border for separation */
+}
+
+nav {
+    background: #111; /* Almost black for navigation bar */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+nav ul li {
+    margin: 0 20px; /* Increased spacing for a more airy feel */
+}
+
+nav ul li a {
+    color: #e8c3a0; /* Light beige color for links */
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: background 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    border-radius: 5px; /* Rounded corners for links */
+}
+
+nav ul li a:hover {
+    background: #444; /* Darker background on hover */
+    color: #fff; /* White text color on hover */
+}
+
+main {
+    padding: 20px;
+    background-image: url('https://wallpapers.com/images/hd/dark-fantasy-wallpaper-5ydjjjj079xkwmp5.jpg'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8); /* Deeper shadow for depth */
+    flex: 1;
+    color: #f0f0f0; /* Light gray text for readability */
+    border: 1px solid #333; /* Dark border for a gothic frame */
+    border-radius: 10px; /* Rounded corners for a softer appearance */
+}
+
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background: #222; /* Dark gray footer */
+    color: #e8c3a0; /* Light beige for footer text */
+    width: 100%;
+    border-top: 2px solid #555; /* Border for separation */
+    text-shadow: 2px 2px 8px #000; /* Strong shadow for depth */
+}
+h1{
+    text-align: center;
+    font-size: xx-large;
+}
+h1{
+    text-align: center;
+    font-size: large;
+}

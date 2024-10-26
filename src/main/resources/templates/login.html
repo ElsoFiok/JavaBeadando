@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Képzelet Gimnázium és Szakközépiskola</title>
+    <title>Bejelentkezés - Képzelet Gimnázium és Szakközépiskola</title>
+    <link rel="stylesheet" href="/css/stylelogin.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Garamond&display=swap"> <!-- Add Google Font for Garamond -->
 </head>
 <body>
-<h1>Bejelentkezés</h1>
-<form action="/login" method="post">
-    <label for="username">Felhasználónév:</label>
-    <input type="text" id="username" name="username" required>
-    <br>
-    <label for="password">Jelszó:</label>
-    <input type="password" id="password" name="password" required>
-    <br>
-    <button type="submit">Bejelentkezés</button>
-</form>
-<p>Még nincs fiókja? <a href="/register">Regisztráljon itt!</a></p>
+<div class="container"> <!-- Wrapper to center content -->
+    <a href="/">
+        <img src="/images/logo.png" alt="Logo" class="logo">
+    </a>
+    <h1>Bejelentkezés</h1>
+    <form action="/login" method="post">
+        <label for="username">Felhasználónév:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Jelszó:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit">Bejelentkezés</button>
+    </form>
+    <p>Még nincs fiókja? <a href="/register">Regisztráljon itt!</a></p>
+</div>
 </body>
 </html>
