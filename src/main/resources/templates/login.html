@@ -13,12 +13,13 @@
         <img src="/images/logo.png" alt="Logo" class="logo">
     </a>
     <h1>Bejelentkezés</h1>
-    <form action="/login" method="post">
+    <form action="/loginposttest" method="post">
         <label for="username">Felhasználónév:</label>
         <input type="text" id="username" name="username" required>
 
         <label for="password">Jelszó:</label>
         <input type="password" id="password" name="password" required>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
         <button type="submit">Bejelentkezés</button>
     </form>

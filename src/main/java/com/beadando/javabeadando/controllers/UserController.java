@@ -15,40 +15,53 @@ import com.beadando.javabeadando.service.UserService;
 
 @Controller
 public class UserController {
+
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    private UserService userService;
+    private UserService userService; // Ensure this service is defined and wired correctly
 
-    @GetMapping("/")
-    public String home() {
-        return "index"; // returns index.html
+    @GetMapping("/login")
+    public String showLoginPage() {
+        return "login"; // Return to the login page (login.html)
+    }
+
+    @PostMapping("/loginposttest") // Ensure this matches the form action
+    public String loginWithCredentials(@RequestParam String username,
+                                       @RequestParam String password,
+                                       Model model) {
+        logger.info("Login attempt with username: {}", username);
+
+        // Implement your authentication logic here
+        boolean isAuthenticated = userService.authenticate(username, password); // Adjust as needed
+
+        if (isAuthenticated) {
+            logger.info("User {} authenticated successfully.", username);
+            return "redirect:/"; // Redirect to the homepage on successful login
+        } else {
+            logger.warn("Authentication failed for user: {}", username);
+            model.addAttribute("errorMessage", "Invalid username or password."); // Add an error message to the model
+            return "redirect:/loginposttest"; // Return to the login page on failure
+        }
     }
 
     @GetMapping("/register")
     public String register() {
-        return "register"; // returns register.html
+        return "register"; // Return to the registration page (register.html)
     }
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute User user) {
-        userService.saveUser(user);
-        return "redirect:/login"; // Redirect to login page after registration
+        userService.saveUser(user); // Implement saving logic in UserService
+        return "redirect:/login"; // Redirect to the login page after registration
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "login"; // returns register.html
+    @GetMapping("/")
+    public String home(Model model) {
+        return "index"; // Return to the homepage (index.html)
     }
-
-    @PostMapping("/login")
-    public String loginmania() {
-        return "redirect:/loginintermediate"; // Redirect to login page after registration
+    @GetMapping("/loginposttest")
+    public String loginposttest() {
+        return "loginposttest"; // Return to the registration page (register.html)
     }
-    @GetMapping("/loginintermediate")
-    public String showLoginIntermediatePage(Model model) {
-        model.addAttribute("message", "This is the intermediate login page."); // Set a message for the view
-        return "loginintermediate"; // Return the name of your HTML template (e.g., loginintermediate.html)
-    }
-
 }

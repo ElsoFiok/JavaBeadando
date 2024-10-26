@@ -16,17 +16,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/register", "/login", "/loginintermediate", "/css/**", "/images/**").permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll() // Allow all requests for testing
                 )
-                .formLogin(form -> form
-                        .loginPage("/login")
-                        .loginProcessingUrl("/loginwithcredentials") // Specify the action URL for processing login
-                        .permitAll()
-                )
-                .logout(logout -> logout
-                        .permitAll()
-                );
+                .csrf().disable(); // Optionally disable CSRF protection for testing purposes
 
         return http.build();
     }
@@ -36,4 +28,3 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
-
