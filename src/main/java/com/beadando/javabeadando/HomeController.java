@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class HomeController {
     @GetMapping("/")
@@ -17,10 +19,6 @@ public class HomeController {
     @GetMapping("/home")
     public String user(Model model) {
         return "user";
-    }
-    @GetMapping("/adatbazis")
-    public String adatbazis(Model model) {
-        return "adatbazis";
     }
     @GetMapping("/admin/home")
     public String admin() {
@@ -55,6 +53,30 @@ public class HomeController {
         userRepo.save(user);
         return "login";
     }
+    @Autowired
+    private JelentkezesRepository jelentkezesRepository;
+
+    @Autowired
+    private JelentkezoRepository jelentkezoRepository;
+
+    @Autowired
+    private KepzesRepository kepzesRepository;
+
+    @GetMapping("/adatbazis")
+    public String viewDatabase(Model model) {
+        List<Jelentkezes> jelentkezeseklistaja = jelentkezesRepository.findAll();
+        model.addAttribute("jelentkezeseklistaja", jelentkezeseklistaja);
+
+        List<Jelentkezo> jelentkezoklistaja = jelentkezoRepository.findAll();
+        model.addAttribute("jelentkezoklistaja", jelentkezoklistaja);
+
+        List<Kepzes> kepzeseklistaja = kepzesRepository.findAll();
+        model.addAttribute("kepzeseklistaja", kepzeseklistaja);
+
+        return "adatbazis";
+    }
+
+
 }
 
 

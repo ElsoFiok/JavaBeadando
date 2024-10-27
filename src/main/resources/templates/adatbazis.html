@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Startlap - Képzelet Gimnázium és Szakközépiskola</title>
+    <title>Adatbázis - Képzelet Gimnázium és Szakközépiskola</title>
     <link rel="stylesheet" href="/css/styleindex.css">
 </head>
 <body>
@@ -15,15 +15,76 @@
 <nav>
     <div th:insert="menu"></div>
 </nav>
-
 <main>
-    <div>
+    <div class="tables-container">
+        <div class="JelentkezesekTabla">
+            <h1>Jelentkezések tábla</h1>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>JelentkezőID</th>
+                    <th>KépzésID</th>
+                    <th>Sorrend</th>
+                    <th>Szerzett</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="Jelentkezes : ${jelentkezeseklistaja}">
+                    <td th:text="${Jelentkezes.id}"></td>
+                    <td th:text="${Jelentkezes.jelentkezoid}"></td>
+                    <td th:text="${Jelentkezes.kepzesid}"></td>
+                    <td th:text="${Jelentkezes.sorrend}"></td>
+                    <td th:text="${Jelentkezes.szerzett}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <h1>ITT LESZ AZ ADATBAZIS</h1>
+        <div class="JelentkezokTabla">
+            <h1>Jelentkezők tábla</h1>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Név</th>
+                    <th>Nem</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="Jelentkezo : ${jelentkezoklistaja}">
+                    <td th:text="${Jelentkezo.id}"></td>
+                    <td th:text="${Jelentkezo.nev}"></td>
+                    <td th:text="${Jelentkezo.nem}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-
+        <div class="KepzesekTabla">
+            <h1>Képzések tábla</h1>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Képzés neve</th>
+                    <th>Felvehető</th>
+                    <th>Minimum</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="Kepzes : ${kepzeseklistaja}">
+                    <td th:text="${Kepzes.id}"></td>
+                    <td th:text="${Kepzes.nev}"></td>
+                    <td th:text="${Kepzes.felveheto}"></td>
+                    <td th:text="${Kepzes.minimum}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </main>
+
 
 <footer>
     <p>&copy; 2024 Képzelet Gimnázium és Szakközépiskola. Minden jog fenntartva.</p>

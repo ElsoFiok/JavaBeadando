@@ -1,3 +1,4 @@
+/* General styles */
 * {
     margin: 0;
     padding: 0;
@@ -61,13 +62,82 @@ main {
     flex: 1;
     color: #f0f0f0; /* Light gray text for readability */
     border: 1px solid #333; /* Dark border for a gothic frame */
-    border-radius: 10px; /* Rounded corners for a softer appearance */
 }
-h3 {
+
+.tables-container {
+    display: flex;
+    gap: 20px; /* Space between tables */
+    overflow-x: auto; /* Horizontal scroll if tables exceed width */
+}
+
+.tables-container > div {
+    flex: 1; /* Makes each table container flexible in width */
+    max-height: 700px; /* Limits the height of each table container */
+    overflow-y: auto; /* Enables vertical scrolling within each table */
+    background: rgba(30, 30, 30, 0.8); /* Dark transparent background for tables */
+    border-radius: 10px; /* Rounded corners for each table */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    padding: 10px; /* Padding for content spacing */
+}
+
+.tables-container h1 {
     text-align: center;
-    font-size: xx-large;
+    margin-bottom: 10px;
     color: #e8c3a0;
+    font-size: 1.5em; /* Slightly larger title font */
 }
+
+.tables-container table {
+    width: 100%; /* Makes tables fill their container */
+    border-collapse: collapse; /* Collapses borders between cells */
+}
+
+.tables-container th {
+    background-color: #444; /* Header background color */
+    color: #e8c3a0; /* Header text color */
+    padding: 12px; /* Padding for header cells */
+    text-align: left; /* Left-align text in header */
+    border-bottom: 2px solid #666; /* Bottom border for separation */
+}
+
+.tables-container td {
+    background-color: rgba(70, 70, 70, 0.7); /* Light background for table cells */
+    color: #f0f0f0; /* Light text color */
+    padding: 10px; /* Padding for table cells */
+    border-bottom: 1px solid #555; /* Bottom border for cells */
+    transition: background 0.3s; /* Smooth transition for hover effect */
+}
+
+.tables-container td:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Lighten background on hover */
+}
+
+/* Custom scrollbar for WebKit browsers (Chrome, Safari) */
+.tables-container::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+.tables-container::-webkit-scrollbar-track {
+    background: #222; /* Dark background for the scrollbar track */
+    border-radius: 10px; /* Rounded edges for the track */
+}
+
+.tables-container::-webkit-scrollbar-thumb {
+    background: #646464; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded edges for the thumb */
+    border: 3px solid #222; /* Creates a gap between thumb and track */
+}
+
+.tables-container::-webkit-scrollbar-thumb:hover {
+    background: #999; /* Lighter thumb color on hover */
+}
+
+/* Custom scrollbar for Firefox */
+.tables-container {
+    scrollbar-width: thin; /* Sets the width of the scrollbar */
+    scrollbar-color: #646464 #222; /* Thumb color and track color */
+}
+
 footer {
     text-align: center;
     padding: 15px 0;
@@ -76,12 +146,4 @@ footer {
     width: 100%;
     border-top: 2px solid #555; /* Border for separation */
     text-shadow: 2px 2px 8px #000; /* Strong shadow for depth */
-}
-h1{
-    text-align: center;
-    font-size: xx-large;
-}
-h1{
-    text-align: center;
-    font-size: large;
 }
