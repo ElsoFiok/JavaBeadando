@@ -33,7 +33,7 @@ public class UserController {
         } else {
             System.out.println("Authentication failed for user: "+ username);
             model.addAttribute("errorMessage", "Invalid username or password.");
-            return "redirect:/login?IncorrectPasswordOrUsername";
+            return "login";
         }
     }
 

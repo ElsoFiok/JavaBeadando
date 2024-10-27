@@ -1,9 +1,9 @@
 package com.beadando.javabeadando.service;
 import java.util.Optional;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.security.core.userdetails.User;
-
-public interface UserRepository extends CrudRepository<User, Integer>
+import com.beadando.javabeadando.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+public interface UserRepository extends JpaRepository<User, Integer>
 {
-    Optional<User> findByUsername(String username);
+    User findByUsername(String username);
 }
