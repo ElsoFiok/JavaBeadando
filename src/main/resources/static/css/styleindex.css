@@ -27,13 +27,23 @@ header {
 
 nav {
     background: #111; /* Almost black for navigation bar */
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center vertically */
+    padding: 10px; /* Padding around the navbar */
+}
+
+nav .welcome-message {
+    color: #e8c3a0; /* Light beige color for the welcome message */
+    font-size: 1.5em; /* Larger font size for visibility */
+    margin-right: 20px; /* Space between welcome message and nav links */
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
-    padding: 10px 0;
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
 }
 
 nav ul li {
@@ -146,4 +156,74 @@ footer {
     width: 100%;
     border-top: 2px solid #555; /* Border for separation */
     text-shadow: 2px 2px 8px #000; /* Strong shadow for depth */
+}
+
+.welcome-section {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Light transparent background */
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.about-section, .contact-section {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly more opaque background */
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.about-section h3, .contact-section h3 {
+    color: #e8c3a0; /* Light beige color for headers */
+}
+
+.specialties-image-container {
+    display: flex;                  /* Enables flexbox */
+    justify-content: space-between; /* Space between items */
+    align-items: flex-start;        /* Align items to the start */
+    margin-top: 20px;              /* Space above this container */
+}
+
+.specialties {
+    flex: 1;                        /* Takes available space */
+    margin-right: 20px;            /* Adds space between specialties and image */
+}
+
+.school-image {
+    width: 20%;                     /* Responsive width */
+    height: auto;                  /* Maintain aspect ratio */
+    border-radius: 10px;           /* Rounded corners for the image */
+    border: 2px solid #e8c3a0;     /* Light beige border to match the webpage */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+    transition: filter 0.3s;       /* Smooth transition for filter effect */
+}
+
+/* Grayscale effect on hover */
+.school-image:hover {
+    filter: grayscale(100%);        /* Apply grayscale filter */
+}
+
+/* Additional styles for sections */
+.about-section {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly more opaque background */
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+main * {
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+}
+
+.menu-item {
+    background-color: rgba(255, 255, 255, 0.05); /* Slightly visible background */
+    border-radius: 5px; /* Rounded corners */
+    padding: 15px; /* Padding for space */
+    margin: 10px 0; /* Space between items */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+}
+
+.menu-item h4 {
+    color: #e8c3a0; /* Header color to match theme */
+    margin-bottom: 10px; /* Space below header */
 }
