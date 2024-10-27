@@ -16,7 +16,7 @@
     <div th:if="${errorMessage}" style="color: red;">
         <p th:text="${errorMessage}"></p>
     </div>
-    <form action="/loginmania" method="post">
+    <form action= th:action="@{/login}" method="post">
         <label for="username">Felhasználónév:</label>
         <input type="text" id="username" name="username" placeholder="Adja meg a felhasználónevét"  required>
 

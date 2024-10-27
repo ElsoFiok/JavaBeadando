@@ -45,6 +45,7 @@ input[type="password"] {
     color: #e8c3a0; /* Light text color for input */
 }
 
+
 input[type="text"]:focus,
 input[type="password"]:focus {
     border-color: #e8c3a0; /* Highlight border on focus */
@@ -81,9 +82,14 @@ a {
     border: 3px solid #e8c3a0; /* Add a border around the logo */
     border-radius: 5px; /* Slightly rounded corners */
 }
-
+input{
+    background-color:darkgrey;
+}
 /* Existing styles... */
 
 a:hover {
     text-decoration: underline; /* Underline on hover */
+}
+fieldset{
+    border-width:0px;
 }

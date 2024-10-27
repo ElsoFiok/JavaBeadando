@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html  xmlns:th="https://www.thymeleaf.org" lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regisztráció - Képzelet Gimnázium és Szakközépiskola</title>
-    <link rel="stylesheet" href="/css/styleregister.css">
+    <link rel="stylesheet" href="/css/styleregisterorlogin.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Garamond&display=swap"> <!-- Add Google Font for Garamond -->
 </head>
 <body>
@@ -16,15 +16,13 @@
     <div th:if="${errorMessage}" style="color: red;">
         <p th:text="${errorMessage}"></p>
     </div>
-    <form action="/register" method="post">
-        <label for="username">Felhasználónév:</label>
-        <input type="text" id="username" name="username" placeholder="Adjon meg egy felhasználónevet" required>
-        <br>
-        <label for="password">Jelszó:</label>
-        <input type="password" id="password" name="password" placeholder="Adjon meg egy jelszót" required>
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <br>
-        <button type="submit">Regisztráljon</button>
+    <form action="#" th:action="@{/regisztral_feldolgoz}" th:object="${reg}" method="post">
+        <fieldset>
+            <legend>Regisztráció</legend>
+            <p><input type="text" th:field="*{username}" placeholder="Kérjük adjon meg egy felhasználónevet" required/></p>
+            <p><input type="password" th:field="*{password}" placeholder="Kérjük adjon meg egy jelszót" required/></p>
+            <p><input type="submit" value="Regisztráció" /></p>
+        </fieldset>
     </form>
     <p>Már van fiókja? <a href="/login">Jelentkezzen be itt!</a></p>
 </div>

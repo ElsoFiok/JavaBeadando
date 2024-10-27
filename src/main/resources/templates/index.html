@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,14 +13,7 @@
 </header>
 
 <nav>
-    <ul xmlns:th="http://www.thymeleaf.org"
-        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-        <li sec:authorize="isAnonymous()"><a href="/login">Bejelentkezés</a></li>
-        <li sec:authorize="isAuthenticated()"><a href="/logout">Kijelentkezés</a></li>
-        <li sec:authorize="isAnonymous()"><a href="/register">Regisztráció</a></li>
-        <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin">Admin city</a></li>
-        <li sec:authorize="isAuthenticated()"><div><h3>Köszöntjük  <span sec:authentication="principal.username">Felhasználó</span></h3></div></li>
-    </ul>
+    <div th:insert="menu"></div>
 </nav>
 
 <main>
@@ -29,6 +23,7 @@
         </br>
         </br>
         </br>
+
         <p>Itt megtekintheti az összes szükséges információt és pontszámokat.</p>
         <p>Kérjük regisztráljon, vagy jelentkezzen be.</p>
     </div>
