@@ -1,68 +1,66 @@
 package com.beadando.javabeadando.controllers;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.beadando.javabeadando.entity.User;
 import com.beadando.javabeadando.service.UserService;
 
 @Controller
 public class UserController {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-
     @Autowired
-    private UserService userService; // Ensure this service is defined and wired correctly
-
+    private UserService userService;
     @GetMapping("/login")
-    public String showLoginPage() {
-        return "login"; // Return to the login page (login.html)
+    public String showLoginPage(@RequestParam(required = false) String IncorrectPasswordOrUsername, Model model) {
+        if (IncorrectPasswordOrUsername != null) {
+            model.addAttribute("errorMessage", "Hibás felhasználónév és jelszó kombináció.");
+        }
+        return "login";
     }
 
-    @PostMapping("/loginmania") // Ensure this matches the form action
+    @PostMapping("/loginmania")
     public String loginWithCredentials(@RequestParam String username,
                                        @RequestParam String password,
                                        Model model) {
-        logger.info("Login attempt with username: {}", username);
-        logger.info("Login attempt with password: {}", password);
-
-        // Implement your authentication logic here
-        boolean isAuthenticated = userService.authenticate(username, password); // Adjust as needed
-
+        System.out.println("Login attempt with username: "+username+" and password: "+ password);
+        boolean isAuthenticated = userService.authenticate(username, password);
         if (isAuthenticated) {
-            logger.info("User {} authenticated successfully.", username);
-            return "redirect:/"; // Redirect to the homepage on successful login
+            System.out.println("User "+ username+" authenticated successfully.");
+            return "redirect:/";
         } else {
-            logger.warn("Authentication failed for user: {}", username);
-            return "redirect:/login"; // Return to the login page on failure
+            System.out.println("Authentication failed for user: "+ username);
+            model.addAttribute("errorMessage", "Invalid username or password.");
+            return "redirect:/login?IncorrectPasswordOrUsername";
         }
     }
 
     @GetMapping("/register")
-    public String register() {
-        return "register"; // Return to the registration page (register.html)
+    public String register(@RequestParam(required = false) String UserExists, Model model) {
+        if (UserExists != null) {
+            model.addAttribute("errorMessage", "Ez a felhasználó már létezik!");
+        }
+        return "register";
     }
 
     @PostMapping("/register")
     public String registerUser(@RequestParam String username,
                                @RequestParam String password) {
-        userService.saveUser(username, password); // Implement saving logic in UserService
-        return "redirect:/login"; // Redirect to the login page after registration
+        if(userService.saveUser(username, password)){
+            return "redirect:/login";
+        }else{
+            return "redirect:/register?UserExists";
+        }
     }
 
     @GetMapping("/")
     public String home(Model model) {
-        return "index"; // Return to the homepage (index.html)
+        return "index";
     }
     @GetMapping("/loginposttest")
     public String loginposttest() {
-        return "loginposttest"; // Return to the registration page (register.html)
+        return "loginposttest";
     }
 }

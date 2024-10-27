@@ -7,24 +7,23 @@
     <link rel="stylesheet" href="/css/styleindex.css">
 </head>
 <body>
-
-<!-- Header Section -->
 <header>
     <h1>Képzelet Gimnázium és Szakközépiskola</h1>
 </header>
 
-<!-- Navigation Bar -->
 <nav>
-    <ul>
-        <li sec:authorize="!isAuthenticated()"><a href="/login">Bejelentkezés</a></li>
+    <ul xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">>
+        <li sec:authorize="isAnonymous()"><a href="/login">Bejelentkezés</a></li>
         <li sec:authorize="isAuthenticated()"><a href="/logout">Kijelentkezés</a></li>
-        <li sec:authorize="!isAuthenticated()"><a href="/register">Regisztráció</a></li>
+        <li sec:authorize="isAnonymous()"><a href="/register">Regisztráció</a></li>
+        <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin">Admin city</a></li>
+        <li><div sec:authorize="isAuthenticated()">
+            <h3>Köszöntjük  <span sec:authentication="principal.username">Felhasználó</span></h3>
+        </div></li>
     </ul>
 </nav>
 
-
-
-<!-- Main Content Section -->
 <main>
     <div>
         <h2>Üdvözöljük a Képzelet Gimnázium és Szakközépiskolában!</h2>
@@ -34,10 +33,9 @@
         </br>
         <p>Itt megtekintheti az összes szükséges információt és pontszámokat.</p>
         <p>Kérjük regisztráljon, vagy jelentkezzen be.</p>
-    </div><!-- Additional content can be added here -->
+    </div>
 </main>
 
-<!-- Footer Section -->
 <footer>
     <p>&copy; 2024 Képzelet Gimnázium és Szakközépiskola. Minden jog fenntartva.</p>
 </footer>
