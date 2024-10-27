@@ -26,11 +26,12 @@ public class UserController {
         return "login"; // Return to the login page (login.html)
     }
 
-    @PostMapping("/loginposttest") // Ensure this matches the form action
+    @PostMapping("/loginmania") // Ensure this matches the form action
     public String loginWithCredentials(@RequestParam String username,
                                        @RequestParam String password,
                                        Model model) {
         logger.info("Login attempt with username: {}", username);
+        logger.info("Login attempt with password: {}", password);
 
         // Implement your authentication logic here
         boolean isAuthenticated = userService.authenticate(username, password); // Adjust as needed
@@ -40,8 +41,7 @@ public class UserController {
             return "redirect:/"; // Redirect to the homepage on successful login
         } else {
             logger.warn("Authentication failed for user: {}", username);
-            model.addAttribute("errorMessage", "Invalid username or password."); // Add an error message to the model
-            return "redirect:/loginposttest"; // Return to the login page on failure
+            return "redirect:/login"; // Return to the login page on failure
         }
     }
 
@@ -51,8 +51,9 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user) {
-        userService.saveUser(user); // Implement saving logic in UserService
+    public String registerUser(@RequestParam String username,
+                               @RequestParam String password) {
+        userService.saveUser(username, password); // Implement saving logic in UserService
         return "redirect:/login"; // Redirect to the login page after registration
     }
 
