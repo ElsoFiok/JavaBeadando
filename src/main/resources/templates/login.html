@@ -1,34 +1,26 @@
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bejelentkezés - Képzelet Gimnázium és Szakközépiskola</title>
-    <link rel="stylesheet" href="/css/stylelogin.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Garamond&display=swap">
-</head>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+    <title>Bejelentkezés</title></head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/styleregisterorlogin.css"> <!-- Include your CSS file -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Garamond&display=swap"> <!-- Add Google Font for Garamond -->
 <body>
-<div class="container">
+<div class="container"> <!-- Added container class -->
     <a href="/">
         <img src="/images/logo.png" alt="Logo" class="logo">
     </a>
     <h1>Bejelentkezés</h1>
-    <div th:if="${errorMessage}" style="color: red;">
-        <p th:text="${errorMessage}"></p>
-    </div>
-    <form action= th:action="@{/login}" method="post">
-        <label for="username">Felhasználónév:</label>
-        <input type="text" id="username" name="username" placeholder="Adja meg a felhasználónevét"  required>
-
-        <label for="password">Jelszó:</label>
-        <input type="password" id="password" name="password" placeholder="Adja meg a jelszavát" required>
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-        <button type="submit">Bejelentkezés</button>
+    <form name="f" th:action="@{/login}" method="post">
+        <fieldset>
+            <p><input type="text" th:field="*{username}" placeholder="Kérjük adja meg a felhasználónevét" required/></p>
+            <p><input type="text" th:field="*{password}" placeholder="Kérjük adja meg a jelszavát" required/></p>
+            <p><button type="submit">Bejelentkezés</button></p>
+        </fieldset>
     </form>
 
-
-    <p>Még nincs fiókja? <a href="/register">Regisztráljon itt!</a></p>
+    <p>Még nincs fiókja? <a href="/regisztral">Regisztráljon itt!</a></p>
 </div>
 </body>
 </html>

@@ -63,7 +63,11 @@ main {
     border: 1px solid #333; /* Dark border for a gothic frame */
     border-radius: 10px; /* Rounded corners for a softer appearance */
 }
-
+h3 {
+    text-align: center;
+    font-size: xx-large;
+    color: #e8c3a0;
+}
 footer {
     text-align: center;
     padding: 15px 0;

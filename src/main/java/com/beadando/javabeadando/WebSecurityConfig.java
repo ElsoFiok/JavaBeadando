@@ -1,5 +1,6 @@
 package com.beadando.javabeadando;
 
+import jakarta.servlet.DispatcherType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,14 +31,15 @@ public class WebSecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(
                         auth -> auth
-                                .requestMatchers ("/resources/**", "/", "/regisztral", "/regisztral_feldolgoz").anonymous()
+                                .requestMatchers ("/resources/**", "/", "/regisztral", "/login").anonymous()
                                 .requestMatchers("/resources/**", "/","/home").authenticated()
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
-                                .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
+                                .requestMatchers("/css/**", "/js/**", "/images/**","/login").permitAll()
                 )
                 .formLogin(
                         form -> form
-                                .defaultSuccessUrl("/home").permitAll()
+                                .loginPage("/login").permitAll()
+                                .defaultSuccessUrl("/home", true).permitAll()
                 ).logout(
                         logout -> logout
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -53,4 +55,5 @@ public class WebSecurityConfig {
     }
 
 }
+
 

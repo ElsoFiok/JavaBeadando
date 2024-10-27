@@ -1,11 +1,13 @@
 package com.beadando.javabeadando;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.Ordered;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +16,7 @@ import java.util.List;
 public class HomeController {
     @GetMapping("/")
     public String home() {
-        return "index";
+        return "index"; // Show the index.html page
     }
     @GetMapping("/home")
     public String user(Model model) {
@@ -24,13 +26,11 @@ public class HomeController {
     public String admin() {
         return "admin";
     }
-
     @GetMapping("/regisztral")
     public String greetingForm(Model model) {
         model.addAttribute("reg", new User());
         return "regisztral";
     }
-
     @Autowired
     private UserRepository userRepo;
     @PostMapping("/regisztral_feldolgoz")
@@ -45,7 +45,7 @@ public class HomeController {
         user.setRole("ROLE_USER");
         userRepo.save(user);
         model.addAttribute("id", user.getId());
-        return "login";
+        return "index";
     }
 }
 
