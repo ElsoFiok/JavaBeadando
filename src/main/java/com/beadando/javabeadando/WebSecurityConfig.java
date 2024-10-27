@@ -1,6 +1,5 @@
 package com.beadando.javabeadando;
 
-import jakarta.servlet.DispatcherType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,33 +18,37 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true, proxyTargetClass = true)
 public class WebSecurityConfig {
+
     @Autowired
     private UserDetailsService userDetailsService;
+
     @Bean
-    public static PasswordEncoder passwordEncoder(){
+    public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(
-                        auth -> auth
-                                .requestMatchers ("/resources/**", "/", "/regisztral", "/login").anonymous()
-                                .requestMatchers("/resources/**", "/","/home").authenticated()
-                                .requestMatchers("/admin/**").hasRole("ADMIN")
-                                .requestMatchers("/css/**", "/js/**", "/images/**","/login").permitAll()
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/resources/**", "/", "/regisztral","/regisztral_feldolgoz", "/login").anonymous()
+                        .requestMatchers("/home", "/admin/**").authenticated()
+                        .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                 )
-                .formLogin(
-                        form -> form
-                                .loginPage("/login").permitAll()
-                                .defaultSuccessUrl("/home", true).permitAll()
-                ).logout(
-                        logout -> logout
-                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                                .logoutSuccessUrl("/")
-                                .permitAll()
+                .formLogin(form -> form
+                        .loginPage("/login") // Your custom login page
+                        .permitAll() // Allow everyone to see the login page
+                        .defaultSuccessUrl("/home") // Redirect to home page after successful login
+                        .failureUrl("/login?error=true") // Redirect to login page with error on failure
+                        .usernameParameter("username") // Specify the username parameter
+                        .passwordParameter("password") // Specify the password parameter
+                )
+                .logout(logout -> logout
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .logoutSuccessUrl("/")
+                        .permitAll()
                 );
+
         return http.build();
     }
 
@@ -53,7 +56,7 @@ public class WebSecurityConfig {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
     }
-
 }
+
 
 
