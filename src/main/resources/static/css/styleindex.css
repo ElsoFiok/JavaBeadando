@@ -227,3 +227,58 @@ main * {
     color: #e8c3a0; /* Header color to match theme */
     margin-bottom: 10px; /* Space below header */
 }
+/* Main styling for the form */
+.message-form {
+    max-width: 600px; /* Maximum width for the form */
+    margin: 20px auto; /* Center the form horizontally */
+    padding: 20px; /* Padding inside the form */
+    border: 1px solid #ccc; /* Light border for the form */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background color */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+/* Main styling for the form */
+.message-form {
+    max-width: 600px; /* Maximum width for the form */
+    margin: 20px auto; /* Center the form horizontally */
+    padding: 20px; /* Padding inside the form */
+    border: 1px solid #555; /* Darker border to match theme */
+    border-radius: 8px; /* Rounded corners */
+    background-color: rgba(30, 30, 30, 0.8); /* Dark transparent background */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+}
+
+/* Styling for the textarea */
+.message-form textarea {
+    width: 100%; /* Full width of the form */
+    height: 150px; /* Fixed height for the textarea */
+    padding: 10px; /* Padding inside the textarea */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px; /* Slightly rounded corners */
+    resize: none; /* Disable resizing */
+    font-size: 16px; /* Font size */
+    background-color: #222; /* Dark background color */
+    color: #f0f0f0; /* Light text color */
+}
+
+/* Styling for the submit button */
+.message-form button {
+    padding: 10px 15px; /* Padding inside the button */
+    background-color: #e8c3a0; /* Light beige background color */
+    color: #222; /* Dark text color for contrast */
+    border: none; /* No border */
+    border-radius: 4px; /* Slightly rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Transition for hover effect */
+    margin: 20px auto 0; /* Center the button with auto margins on sides */
+    display: block; /* Makes the button block-level to center it */
+}
+
+/* Hover effect for the button */
+.message-form button:hover {
+    background-color: #a267da; /* Slightly darker beige on hover */
+}
+
+
+

@@ -17,6 +17,9 @@
             <li sec:authorize="hasRole('ROLE_ADMIN')">
                 <a th:href="@{/admin/home}">Admin felület</a>
             </li>
+            <li>
+                <a th:href="@{/message}">Küldjön egy üzenetet</a>
+            </li>
         </ul>
     </nav>
 </div>
