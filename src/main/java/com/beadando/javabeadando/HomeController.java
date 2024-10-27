@@ -1,24 +1,12 @@
 package com.beadando.javabeadando;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.Ordered;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.DriverManager;
-import org.springframework.stereotype.Service;
-import java.sql.PreparedStatement;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
@@ -30,13 +18,20 @@ public class HomeController {
     public String user(Model model) {
         return "user";
     }
+    @GetMapping("/adatbazis")
+    public String adatbazis(Model model) {
+        return "adatbazis";
+    }
     @GetMapping("/admin/home")
     public String admin() {
         return "admin";
     }
     @GetMapping("/regisztral")
-    public String greetingForm(Model model) {
+    public String greetingForm(@RequestParam(value = "error", required = false) String error,Model model) {
         model.addAttribute("reg", new User());
+        if (error != null) {
+            model.addAttribute("errorMessage", "Hiba történt a regisztráció során!");
+        }
         return "regisztral";
     }
     @GetMapping("/login")
@@ -47,18 +42,17 @@ public class HomeController {
     private UserRepository userRepo;
     @PostMapping("/regisztral_feldolgoz")
     public String Regisztráció(@ModelAttribute User user, Model model) {
-        System.out.println("hey");
-        System.out.println(user);
-        for(User felhasznalo2: userRepo.findAll())
-            if(felhasznalo2.getName().equals(user.getName())){
-                model.addAttribute("uzenet", "A regisztrációs név már foglalt!");
-                return "reghiba";
+
+        for (User felhasznalo2 : userRepo.findAll()) {
+            if (felhasznalo2.getName().equals(user.getName())) {
+                return "redirect:/regisztral?error=true";
             }
+        }
+
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole("ROLE_USER");
         userRepo.save(user);
-        model.addAttribute("id", user.getId());
         return "login";
     }
 }

@@ -31,8 +31,8 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/resources/**", "/", "/regisztral","/regisztral_feldolgoz", "/login").anonymous()
-                        .requestMatchers("/home", "/admin/**").authenticated()
+                        .requestMatchers("/resources/**", "/", "/regisztral","/regisztral_feldolgoz","/register?Error=true", "/login").anonymous()
+                        .requestMatchers("/home","/adatbazis/**", "/admin/**").authenticated()
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                 )
                 .formLogin(form -> form

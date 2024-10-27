@@ -12,10 +12,10 @@
         <img src="/images/logo.png" alt="Logo" class="logo">
     </a>
     <h1>Bejelentkezés</h1>
-<div th:if="${param.error}">
-    Invalid username and password.</div>
-<div th:if="${param.logout}">
-    You have been logged out.</div>
+    <div th:if="${param.error}">
+        Hibás felhasználónév és jelszó.</div>
+    <div th:if="${param.logout}">
+        Ki lett jelentkezve.</div>
 <form th:action="@{/login}" method="post">
     <p>
         <input type="text" name="username" placeholder="Username"/>

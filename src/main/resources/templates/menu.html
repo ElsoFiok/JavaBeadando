@@ -4,14 +4,16 @@
         <ul>
             <li sec:authorize="isAnonymous()">
                 <a th:href="@{/login}">Login</a>
-                <a th:href="@{/regisztral}">Regisztrál</a>
+                <a th:href="@{/regisztral}">Regisztrálás</a>
             </li>
             <li sec:authorize="isAuthenticated()">
                 <a th:href="@{/home}">Home</a>
-                <a th:href="@{/logout}">Logout</a>
+                <a th:href="@{/adatbazis}">Adatbázis megtekintése</a>
+                <a th:href="@{/logout}">Kijelentkezés(Kilépés)</a>
             </li>
+
             <li sec:authorize="hasRole('ROLE_ADMIN')">
-                <a th:href="@{/admin/home}">Admin</a>
+                <a th:href="@{/admin/home}">Admin felület</a>
             </li>
         </ul>
         <div sec:authorize="isAuthenticated()">

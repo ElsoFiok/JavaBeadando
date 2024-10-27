@@ -11,7 +11,11 @@
   <a href="/">
     <img src="/images/logo.png" alt="Logo" class="logo">
   </a>
-  <h1>Regisztráció</h1> <!-- Changed h3 to h1 for consistency -->
+  <h1>Regisztráció</h1>
+  <div th:if="${errorMessage}" style="color: red;">
+    <p th:text="${errorMessage}"></p>
+  </div>
+
   <form action="#" th:action="@{/regisztral_feldolgoz}" th:object="${reg}" method="post">
     <fieldset>
       <p><input type="text" th:field="*{name}" placeholder="Kérjük adjon meg egy felhasználónevet" required/></p>
