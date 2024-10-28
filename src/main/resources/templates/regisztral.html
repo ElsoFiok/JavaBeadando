@@ -12,9 +12,6 @@
     <img src="/images/logo.png" alt="Logo" class="logo">
   </a>
   <h1>Regisztráció</h1>
-  <div th:if="${errorMessage}" style="color: red;">
-    <p th:text="${errorMessage}"></p>
-  </div>
 
   <form action="#" th:action="@{/regisztral_feldolgoz}" th:object="${reg}" method="post">
     <fieldset>

@@ -47,9 +47,13 @@ public class HomeController {
 
 
     @GetMapping("/admin/home")
-    public String admin() {
+    public String admin(Model model) {
+        List<Message> messageslista = messageRepository.findAll();
+        System.out.println("Number of messages: " + messageslista.size());
+        model.addAttribute("messageslista", messageslista); // Ensure this key matches in your Thymeleaf template
         return "admin";
     }
+
 
     @GetMapping("/regisztral")
     public String greetingForm(@RequestParam(value = "error", required = false) String error, Model model) {

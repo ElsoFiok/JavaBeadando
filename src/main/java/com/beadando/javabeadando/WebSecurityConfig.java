@@ -31,6 +31,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/resources/**", "/", "/regisztral","/regisztral_feldolgoz","/register?Error=true", "/login").anonymous()
                         .requestMatchers("/home","/adatbazis/**", "/admin/**").authenticated()
+                        .requestMatchers( "/admin/home").hasRole("Admin")
                         .requestMatchers("/css/**", "/js/**", "/images/**","/message","/message/send","/sendMessage").permitAll()
                 )
                 .formLogin(form -> form
