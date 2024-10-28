@@ -1,0 +1,25 @@
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <nav>
+        <div class="welcome-message" sec:authorize="isAuthenticated()">
+            <h3>Welcome <span sec:authentication="principal.username">User</span></h3>
+        </div>
+        <ul class="nav-links">
+            <li sec:authorize="isAnonymous()">
+                <a th:href="@{/login}">Login</a>
+                <a th:href="@{/regisztral}">Regisztrálás</a>
+            </li>
+            <li sec:authorize="isAuthenticated()">
+                <a th:href="@{/home}">Home</a>
+                <a th:href="@{/adatbazis}">Adatbázis megtekintése</a>
+                <a th:href="@{/logout}">Kijelentkezés(Kilépés)</a>
+            </li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')">
+                <a th:href="@{/admin/home}">Admin felület</a>
+            </li>
+            <li>
+                <a th:href="@{/message}">Küldjön egy üzenetet</a>
+            </li>
+        </ul>
+    </nav>
+</div>

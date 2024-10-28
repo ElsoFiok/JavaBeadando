@@ -1,0 +1,284 @@
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Garamond', serif; /* Elegant serif font for a classic gothic look */
+    line-height: 1.6;
+    background-color: #0d0d0d; /* Deep black background */
+    color: #f0f0f0; /* Light gray text for contrast */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background: #222; /* Dark gray header */
+    color: #e8c3a0; /* Light beige for text */
+    text-align: center;
+    padding: 20px 0;
+    font-size: 2.5em; /* Larger font size for header */
+    text-shadow: 2px 2px 8px #000; /* Strong shadow for depth */
+    border-bottom: 2px solid #555; /* Subtle border for separation */
+}
+
+nav {
+    background: #111; /* Almost black for navigation bar */
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center vertically */
+    padding: 10px; /* Padding around the navbar */
+}
+
+nav .welcome-message {
+    color: #e8c3a0; /* Light beige color for the welcome message */
+    font-size: 1.5em; /* Larger font size for visibility */
+    margin-right: 20px; /* Space between welcome message and nav links */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+nav ul li {
+    margin: 0 20px; /* Increased spacing for a more airy feel */
+}
+
+nav ul li a {
+    color: #e8c3a0; /* Light beige color for links */
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: background 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    border-radius: 5px; /* Rounded corners for links */
+}
+
+nav ul li a:hover {
+    background: #444; /* Darker background on hover */
+    color: #fff; /* White text color on hover */
+}
+
+main {
+    padding: 20px;
+    background-image: url('https://wallpapers.com/images/hd/dark-fantasy-wallpaper-5ydjjjj079xkwmp5.jpg'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8); /* Deeper shadow for depth */
+    flex: 1;
+    color: #f0f0f0; /* Light gray text for readability */
+    border: 1px solid #333; /* Dark border for a gothic frame */
+}
+
+.tables-container {
+    display: flex;
+    gap: 20px; /* Space between tables */
+    overflow-x: auto; /* Horizontal scroll if tables exceed width */
+}
+
+.tables-container > div {
+    flex: 1; /* Makes each table container flexible in width */
+    max-height: 700px; /* Limits the height of each table container */
+    overflow-y: auto; /* Enables vertical scrolling within each table */
+    background: rgba(30, 30, 30, 0.8); /* Dark transparent background for tables */
+    border-radius: 10px; /* Rounded corners for each table */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    padding: 10px; /* Padding for content spacing */
+}
+
+.tables-container h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #e8c3a0;
+    font-size: 1.5em; /* Slightly larger title font */
+}
+
+.tables-container table {
+    width: 100%; /* Makes tables fill their container */
+    border-collapse: collapse; /* Collapses borders between cells */
+}
+
+.tables-container th {
+    background-color: #444; /* Header background color */
+    color: #e8c3a0; /* Header text color */
+    padding: 12px; /* Padding for header cells */
+    text-align: left; /* Left-align text in header */
+    border-bottom: 2px solid #666; /* Bottom border for separation */
+}
+
+.tables-container td {
+    background-color: rgba(70, 70, 70, 0.7); /* Light background for table cells */
+    color: #f0f0f0; /* Light text color */
+    padding: 10px; /* Padding for table cells */
+    border-bottom: 1px solid #555; /* Bottom border for cells */
+    transition: background 0.3s; /* Smooth transition for hover effect */
+}
+
+.tables-container td:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Lighten background on hover */
+}
+
+/* Custom scrollbar for WebKit browsers (Chrome, Safari) */
+.tables-container::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+.tables-container::-webkit-scrollbar-track {
+    background: #222; /* Dark background for the scrollbar track */
+    border-radius: 10px; /* Rounded edges for the track */
+}
+
+.tables-container::-webkit-scrollbar-thumb {
+    background: #646464; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded edges for the thumb */
+    border: 3px solid #222; /* Creates a gap between thumb and track */
+}
+
+.tables-container::-webkit-scrollbar-thumb:hover {
+    background: #999; /* Lighter thumb color on hover */
+}
+
+/* Custom scrollbar for Firefox */
+.tables-container {
+    scrollbar-width: thin; /* Sets the width of the scrollbar */
+    scrollbar-color: #646464 #222; /* Thumb color and track color */
+}
+
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background: #222; /* Dark gray footer */
+    color: #e8c3a0; /* Light beige for footer text */
+    width: 100%;
+    border-top: 2px solid #555; /* Border for separation */
+    text-shadow: 2px 2px 8px #000; /* Strong shadow for depth */
+}
+
+.welcome-section {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Light transparent background */
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.about-section, .contact-section {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly more opaque background */
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.about-section h3, .contact-section h3 {
+    color: #e8c3a0; /* Light beige color for headers */
+}
+
+.specialties-image-container {
+    display: flex;                  /* Enables flexbox */
+    justify-content: space-between; /* Space between items */
+    align-items: flex-start;        /* Align items to the start */
+    margin-top: 20px;              /* Space above this container */
+}
+
+.specialties {
+    flex: 1;                        /* Takes available space */
+    margin-right: 20px;            /* Adds space between specialties and image */
+}
+
+.school-image {
+    width: 20%;                     /* Responsive width */
+    height: auto;                  /* Maintain aspect ratio */
+    border-radius: 10px;           /* Rounded corners for the image */
+    border: 2px solid #e8c3a0;     /* Light beige border to match the webpage */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+    transition: filter 0.3s;       /* Smooth transition for filter effect */
+}
+
+/* Grayscale effect on hover */
+.school-image:hover {
+    filter: grayscale(100%);        /* Apply grayscale filter */
+}
+
+/* Additional styles for sections */
+.about-section {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly more opaque background */
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+main * {
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+}
+
+.menu-item {
+    background-color: rgba(255, 255, 255, 0.05); /* Slightly visible background */
+    border-radius: 5px; /* Rounded corners */
+    padding: 15px; /* Padding for space */
+    margin: 10px 0; /* Space between items */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+}
+
+.menu-item h4 {
+    color: #e8c3a0; /* Header color to match theme */
+    margin-bottom: 10px; /* Space below header */
+}
+/* Main styling for the form */
+.message-form {
+    max-width: 600px; /* Maximum width for the form */
+    margin: 20px auto; /* Center the form horizontally */
+    padding: 20px; /* Padding inside the form */
+    border: 1px solid #ccc; /* Light border for the form */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background color */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+/* Main styling for the form */
+.message-form {
+    max-width: 600px; /* Maximum width for the form */
+    margin: 20px auto; /* Center the form horizontally */
+    padding: 20px; /* Padding inside the form */
+    border: 1px solid #555; /* Darker border to match theme */
+    border-radius: 8px; /* Rounded corners */
+    background-color: rgba(30, 30, 30, 0.8); /* Dark transparent background */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+}
+
+/* Styling for the textarea */
+.message-form textarea {
+    width: 100%; /* Full width of the form */
+    height: 150px; /* Fixed height for the textarea */
+    padding: 10px; /* Padding inside the textarea */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px; /* Slightly rounded corners */
+    resize: none; /* Disable resizing */
+    font-size: 16px; /* Font size */
+    background-color: #222; /* Dark background color */
+    color: #f0f0f0; /* Light text color */
+}
+
+/* Styling for the submit button */
+.message-form button {
+    padding: 10px 15px; /* Padding inside the button */
+    background-color: #e8c3a0; /* Light beige background color */
+    color: #222; /* Dark text color for contrast */
+    border: none; /* No border */
+    border-radius: 4px; /* Slightly rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Transition for hover effect */
+    margin: 20px auto 0; /* Center the button with auto margins on sides */
+    display: block; /* Makes the button block-level to center it */
+}
+
+/* Hover effect for the button */
+.message-form button:hover {
+    background-color: #a267da; /* Slightly darker beige on hover */
+}
+
+
+
