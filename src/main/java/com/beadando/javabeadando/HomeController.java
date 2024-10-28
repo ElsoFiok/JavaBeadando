@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.data.domain.Sort;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -48,9 +48,9 @@ public class HomeController {
 
     @GetMapping("/admin/home")
     public String admin(Model model) {
-        List<Message> messageslista = messageRepository.findAll();
+        List<Message> messageslista = messageRepository.findAll(Sort.by(Sort.Direction.DESC, "ido"));
         System.out.println("Number of messages: " + messageslista.size());
-        model.addAttribute("messageslista", messageslista); // Ensure this key matches in your Thymeleaf template
+        model.addAttribute("messageslista", messageslista);
         return "admin";
     }
 

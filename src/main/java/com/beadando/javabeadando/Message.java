@@ -1,7 +1,7 @@
 package com.beadando.javabeadando;
 
 import jakarta.persistence.*;
-import java.sql.Timestamp; // Use java.sql.Timestamp
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "messages")
@@ -20,7 +20,11 @@ public class Message {
     @Column(name = "ido", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp ido;
 
-    // Getters and setters
+    @ManyToOne
+    @JoinColumn(name = "kuldoid", referencedColumnName = "id", insertable = false, updatable = false)
+    private User sender; // Assuming you have a User class
+
+    // Getters and setters...
     public int getId() {
         return id;
     }
@@ -51,5 +55,13 @@ public class Message {
 
     public void setIdo(Timestamp ido) {
         this.ido = ido;
+    }
+
+    public User getSender() {
+        return sender;
+    }
+
+    public void setSender(User sender) {
+        this.sender = sender;
     }
 }

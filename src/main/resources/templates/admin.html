@@ -25,17 +25,21 @@
                     <th>ID</th>
                     <th>Üzenet</th>
                     <th>Idő amikor küldték</th>
-                    <th>KüldőID</th>
+                    <th>Küldő neve</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="message  : ${messageslista}">
+                <tr th:each="message : ${messageslista}">
                     <td th:text="${message.id}"></td>
                     <td th:text="${message.uzenet}"></td>
                     <td th:text="${message.ido}"></td>
-                    <td th:text="${message.kuldoid}"></td>
+                    <td>
+                        <span th:if="${message.kuldoid == 0}">Vendég</span>
+                        <span th:if="${message.kuldoid != 0}" th:text="${message.sender.name}"></span>
+                    </td>
                 </tr>
                 </tbody>
+
             </table>
         </div>
     </div>
